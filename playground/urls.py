@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.say_hello),
     path('about/', views.about, name='About'),
-    path('youtube/', views.youtube, name='youtube'),
+    path('contact/', views.contact_me, name='contact'),
     path('analyze/', views.analyze, name='punctuation')
 ]
 
