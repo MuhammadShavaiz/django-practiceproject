@@ -3,7 +3,7 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'home.html')
 def about(request):
-    return HttpResponse("I am Muhammad Shavaiz Butt and this is my first django project")
+    return HttpResponse('I am Muhammad Shavaiz Butt and this is my first django project')
 def contact_me(request):
     return HttpResponse('contact me: +92 3206877289')
 def analyze(request):
