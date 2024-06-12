@@ -1,5 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-def home1(request):
-    return render(request, 'home1.html')
+def home(request):
+    return render(request, 'home.html')
+def about(request):
+    return HttpResponse("this is about")
+def contact(request):
+    return HttpResponse("this is contact")
+def tracker(request):
+    return HttpResponse("this is tracker")
+def checkout(request):
+    return HttpResponse("this is checkout")
+def productView(request):
+    return HttpResponse("this is productView")
+def search(request):
+    return HttpResponse("this is search")
