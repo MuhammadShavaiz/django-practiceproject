@@ -1,30 +1,45 @@
-from math import ceil
 from django.shortcuts import render
+from .models import Product
+from math import ceil
+
+# Create your views here.
 from django.http import HttpResponse
-from ecommerce_shop.models import Product
 
 def home(request):
-    products= Product.objects.all()
-    allProds=[]
-    catprods= Product.objects.values('category', 'id')
-    cats= {item["category"] for item in catprods}
+    # products = Product.objects.all()
+    # print(products)
+    # n = len(products)
+    # nSlides = n//4 + ceil((n/4)-(n//4))
+
+    allProds = []
+    catprods = Product.objects.values('category', 'id')
+    cats = {item['category'] for item in catprods}
     for cat in cats:
-        prod=Product.objects.filter(category=cat)
+        prod = Product.objects.filter(category=cat)
         n = len(prod)
         nSlides = n // 4 + ceil((n / 4) - (n // 4))
         allProds.append([prod, range(1, nSlides), nSlides])
 
-    params={'allProds':allProds }
-    return render(request,'home.html', params)
+    # params = {'no_of_slides':nSlides, 'range': range(1,nSlides),'product': products}
+    # allProds = [[products, range(1, nSlides), nSlides],
+    #             [products, range(1, nSlides), nSlides]]
+    params = {'allProds':allProds}
+    return render(request, 'home.html', params)
+
 def about(request):
-    return render(request, "about.html")
+    return render(request, 'about.html')
+
 def contact(request):
-    return HttpResponse("this is contact")
+    return HttpResponse("We are at contact")
+
 def tracker(request):
-    return HttpResponse("this is tracker")
-def checkout(request):
-    return HttpResponse("this is checkout")
-def productView(request):
-    return HttpResponse("this is productView")
+    return HttpResponse("We are at tracker")
+
 def search(request):
-    return HttpResponse("this is search")
+    return HttpResponse("We are at search")
+
+def productView(request):
+    return HttpResponse("We are at product view")
+
+def checkout(request):
+    return HttpResponse("We are at checkout")
